@@ -1,0 +1,5 @@
+[user]
+    user = miketran
+    email = 90michaeltran@gmail.com
+[alias]
+    lall = log --color --graph --decorate --all --oneline
