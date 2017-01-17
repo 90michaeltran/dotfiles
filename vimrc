@@ -10,6 +10,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe'
 Plug 'fatih/vim-go'
+Plug 'https://github.com/ctrlpvim/ctrlp.vihttps://github.com/ctrlpvim/ctrlp.vimm'
 call plug#end()
 
 "===================
@@ -38,6 +39,7 @@ filetype indent plugin on
 
 " UI Config
 set number
+set relativenumber
 set mouse=a
 set laststatus=2
 set lazyredraw
@@ -82,6 +84,11 @@ set foldmethod=indent
 "let mapleader="\<Space>"
 map  <Space> <leader>
 
+" To compile C++ code
+" map <F8> :!g++ % && ./a.out <CR>
+nnoremap <silent> <f7> :make %<<cr>
+nnoremap <silent> <F8> :w<CR> :!clear; make<CR> :!./%<<CR>
+
 "==========================
 "===== plugin options =====
 "==========================
@@ -102,10 +109,24 @@ let g:syntastic_python_flake8_args = "--ignore=E501"
 noremap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen = 1
 
-
 " Pathogen Settings
 " Plugin
 " execute pathogen#infect()
 
 " Enable filetype plugins
 " filetype plugin on
+"
+"==========================
+"======= Functions! =======
+"==========================
+" Automagically insert template for new header files
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  let filename = expand("%:t")
+  execute "normal! i/* " . filename . " */\n"
+  execute "normal! o#ifndef " . gatename
+  execute "normal! o#define " . gatename . "\n"
+  execute "normal! Go#endif /* " . gatename . " */"
+  normal! kk
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
