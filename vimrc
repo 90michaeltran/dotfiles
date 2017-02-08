@@ -10,7 +10,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe'
 Plug 'fatih/vim-go'
-Plug 'https://github.com/ctrlpvim/ctrlp.vihttps://github.com/ctrlpvim/ctrlp.vimm'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+Plug 'https://github.com/Raimondi/delimitMate'
 call plug#end()
 
 "===================
@@ -87,7 +88,7 @@ map  <Space> <leader>
 " To compile C++ code
 " map <F8> :!g++ % && ./a.out <CR>
 nnoremap <silent> <f7> :make %<<cr>
-nnoremap <silent> <F8> :w<CR> :!clear; make<CR> :!./%<<CR>
+nnoremap <silent> <F8> :w<CR> :!clear; make<CR> :!./run<CR>
 
 "==========================
 "===== plugin options =====
@@ -130,3 +131,52 @@ function! s:insert_gates()
   normal! kk
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+
+function! Makefile()
+    " execute "normal! i# Declaration of variables"
+    execute "normal! iCC = g++"
+    execute "normal! oCC_FLAGS = -w\n"
+
+    " execute "normal! o# File names"
+    execute "normal! oEXEC = run"
+    execute "normal! oSOURCES = $(wildcard *.cpp)"
+    execute "normal! oOBJECTS= $(SOURCES:.cpp=.o)\n"
+
+    execute "normal! oall: $(EXEC)\n"
+
+    " execute "normal! o#Main target"
+    execute "normal! o$(EXEC): $(OBJECTS)"
+    execute "normal! o  $(CC) $(OBJECTS) -o $(EXEC)\n"
+
+    " execute "normal! o#To obtain object files"
+    execute "normal! o%.o: %.cpp"
+    execute "normal! o  $(CC) -c $<\n"
+
+    " execute "normal! o#To remove generated files"
+    execute "normal! oclean:"
+    execute "normal! o  rm -f $(EXEC) $(OBJECTS)"
+    normal! kk
+endfunction
+noremap <leader>m :call Makefile()<CR>
+
+"
+" "# Declaration of variables
+" "CC = g++
+" "CC_FLAGS = -w
+" " 
+" "# File names
+" "EXEC = run
+" "SOURCES = $(wildcard *.cpp)
+" "OBJECTS = $(SOURCES:.cpp=.o)
+" " 
+" "# Main target
+" "$(EXEC): $(OBJECTS)
+" "	$(CC) $(OBJECTS) -o $(EXEC)
+" " 
+" "# To obtain object files
+" "%.o: %.cpp
+" "	$(CC) -c $(CC_FLAGS) $< -o $@
+" " 
+" "# To remove generated files
+" "clean:
+" "	rm -f $(EXEC) $(OBJECTS)
