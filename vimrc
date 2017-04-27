@@ -12,6 +12,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'fatih/vim-go'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'https://github.com/Raimondi/delimitMate'
+Plug 'https://github.com/tomtom/tcomment_vim'
 call plug#end()
 
 "===================
