@@ -18,6 +18,9 @@ call plug#end()
 "===================
 "===== Options =====
 "===================
+"Automatic reload of vimrc
+autocmd! bufwritepost .vmrc source %
+
 " syntax highlighting
 syntax enable
 syntax on
@@ -46,6 +49,8 @@ set mouse=a
 set laststatus=2
 set lazyredraw
 set showmatch
+set colorcolumn=80
+highlight ColorColumn ctermbg=233
 
 " Shows the last command entered
 set showcmd
@@ -78,6 +83,16 @@ set foldlevelstart=10
 set foldnestmax=10
 nnoremap <space> za
 set foldmethod=indent
+
+" Alphapetize selection
+vnoremap <Leader>a :sort<CR>
+
+" Easier moving of code blocks
+vnoremap < <gv
+vnoremap > >gv
+
+" Disable swap files
+set noswapfile
 
 "========================
 "===== key bindings =====
