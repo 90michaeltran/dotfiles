@@ -50,6 +50,10 @@ set laststatus=2
 set lazyredraw
 set showmatch
 set colorcolumn=80
+set listchars=tab:<-,trail:~
+set showcmd
+set visualbell
+set nostartofline
 highlight ColorColumn ctermbg=233
 
 " Shows the last command entered
@@ -69,7 +73,7 @@ set incsearch
 set hlsearch
 set smartcase
 set ignorecase
-nnoremap <silent><Space> :nohlsearch<CR>
+nnoremap <leader><Space> :noh<CR>
 
 " Keeps X lines offset while scrolling the file
 set scrolloff=2
@@ -90,6 +94,19 @@ vnoremap <Leader>a :sort<CR>
 " Easier moving of code blocks
 vnoremap < <gv
 vnoremap > >gv
+
+" Save and run python
+nnoremap <leader>b :w !python %<CR>
+
+" Easier navigating between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Open new panes right and below
+set splitbelow
+set splitright
 
 " Disable swap files
 set noswapfile
@@ -112,7 +129,7 @@ nnoremap <silent> <F8> :w<CR> :!clear; make<CR> :!./run<CR>
 "====== syntastic =====
 nnoremap <leader>s :SyntasticCheck<CR>
 nnoremap <leader>n :lnext<CR>
-nnoremap <leader>b :lprevious<CR>
+" nnoremap <leader>b :lprevious<CR>
 let g:syntastic_c_check_header = 1
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_pylint_exec = 'flake8'
