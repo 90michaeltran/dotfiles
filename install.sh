@@ -8,9 +8,20 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
+homedir=~/
 files="vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
 
 ##########
+
+# Ask the user if they have installed the dependencies
+while true; do
+    read -p "Have you installed the required dependencies, defined in the README? [y/n] " yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) echo "Please install the required dependencies, and run ./install.sh again"; exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
@@ -29,3 +40,8 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+echo "Sourcing the .zshrc from ~/dotfiles"
+source ~/.zshrc
+
+echo -e "\nUsing vim, open ~/.vim/plugged/autoload/plug.vim and run the command :PlugInstall"
