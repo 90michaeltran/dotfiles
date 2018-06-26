@@ -5,7 +5,7 @@
 export ZSH="/Users/sniffer/.oh-my-zsh"
 
 # Alias for virtualenv
-alias activate="source ~/env/bin/acrtivate"
+alias activate="source ~/env/bin/activate"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
