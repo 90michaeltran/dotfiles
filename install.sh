@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 homedir=~/
-files="vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
+files="vimrc vim zshrc oh-my-zsh gitconfig"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -41,7 +41,5 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-echo "Sourcing the .zshrc from ~/dotfiles"
-source ~/.zshrc
-
+echo -e "\nNow source the moved zshrc by running 'source ~/.zshrc'"
 echo -e "\nUsing vim, open ~/.vim/plugged/autoload/plug.vim and run the command :PlugInstall"
