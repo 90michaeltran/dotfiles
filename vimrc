@@ -52,7 +52,7 @@ set showmatch
 set colorcolumn=80
 set listchars=tab:<-,trail:~
 set showcmd
-set visualbell
+" set visualbell
 set nostartofline
 highlight ColorColumn ctermbg=233
 
