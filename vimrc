@@ -35,6 +35,9 @@ set softtabstop=4
 set expandtab
 set smarttab
 
+" For javascript
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+
 " Allow backspace
 set backspace=2
 
