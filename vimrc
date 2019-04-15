@@ -13,6 +13,7 @@ Plug 'fatih/vim-go'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'https://github.com/Raimondi/delimitMate'
 Plug 'https://github.com/tomtom/tcomment_vim'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 "===================
@@ -151,6 +152,10 @@ let g:syntastic_python_flake8_args = "--ignore=E501"
 " open and close nerdtree
 noremap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeQuitOnOpen = 1
+
+"===== Emmet =====
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
 
 " Pathogen Settings
 " Plugin
