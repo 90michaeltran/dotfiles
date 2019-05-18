@@ -15,3 +15,6 @@ Run `./install.sh` from `~/dotfiles`
 Move to the home directory and open `.vimrc` with vim. 
 
 Run the command `PlugInstall` (More information can be found at https://github.com/junegunn/vim-plug)
+
+## Visual Studio Code
+After installing Visual Studio Code, open the `keybindings.json` and replace the contents with those defined in `../dotfiles/vscode/keybindings.json`

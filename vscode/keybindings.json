@@ -1,0 +1,47 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "shift+cmd+enter",
+        "command": "workbench.action.maximizeEditor",
+    },
+    {
+        // note the additional `ctrl` here since we don't have a context to know if the editor is maximized
+        "key": "ctrl+shift+cmd+enter",  
+        "command": "workbench.action.evenEditorWidths",
+    },
+    // {
+    //     "key": "shift+cmd+enter",
+    //     "command": "workbench.action.toggleMaximizedPanel",
+    //     "when": "terminalFocus"
+    // },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "shift+cmd+right",
+        "command": "moveActiveEditor",
+        "args": {
+          "to": "right"
+        }
+    },
+    {
+        "key": "shift+cmd+left",
+        "command": "moveActiveEditor",
+        "args": {
+          "to": "left"
+        }
+    }
+]
